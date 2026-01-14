@@ -1,0 +1,139 @@
+:root {
+  --bg-color: #0a0a0a;
+  --card-bg: #141414;
+  --text-main: #ffffff;
+  --text-dim: #a0a0a0;
+  --accent: #646cff;
+  --accent-glow: rgba(100, 108, 255, 0.3);
+  
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  color-scheme: dark;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Minimalist Logo handling */
+.logo {
+  height: 5em;
+  padding: 1.2em;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s;
+  filter: grayscale(1); /* Minimalist touch: color on hover */
+}
+
+.logo:hover {
+  filter: grayscale(0) drop-shadow(0 0 30px var(--accent-glow));
+  transform: scale(1.05);
+}
+
+/* Typography & Links */
+a {
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: inherit;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+/* Card Styling: Neumorphic/Glassmorphism hybrid */
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+input {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 300px;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+input::placeholder {
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+input:focus {
+  border-color: var(--accent);
+  background-color: #222;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+input:focus::placeholder {
+  color: #888;
+}
+
+/* Optional: Add a slight hover effect */
+input:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+button:hover {
+  border-color: var(--accent);
+  background-color: #252525;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.read-the-docs {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 3rem;
+}
+
+/* Clean Animations */
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 40s linear;
+  }
+}

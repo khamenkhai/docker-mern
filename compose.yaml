@@ -1,0 +1,46 @@
+# version: '3.8'
+
+services:
+  web:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - api
+    develop:
+      watch: 
+        - path: ./frontend/package.json
+          action: rebuild
+        - path: ./frontend/package-lock.json
+          action: rebuild
+        - path: ./frontend
+          target: /app
+          action: sync
+
+  api:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URL=mongodb://db:27017/docker_mern_test
+    depends_on:
+      - db
+    develop:
+      watch: 
+        - path: ./backend/package.json
+          action: rebuild
+        - path: ./backend
+          target: /app
+          action: sync
+
+  db:
+    image: mongo:latest
+    ports:
+      - "27017:27017" 
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
